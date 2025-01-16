@@ -17,4 +17,3 @@ SQLAlchemy
 duckdb
 bs4
 faiss-cpu
-
