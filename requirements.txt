@@ -6,7 +6,7 @@ langchain-text-splitters
 langchain_chroma 
 langchain_text_splitters
 streamlit
-chromadb
+chroma
 datasets
 sentence_transformers
 huggingface_hub
