@@ -18,3 +18,4 @@ SQLAlchemy
 duckdb
 bs4
 duckduckgo_search==5.3.1b1
+sqlite3== 3.35.0
