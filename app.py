@@ -19,7 +19,7 @@ from langchain.callbacks import StreamlitCallbackHandler
 from langchain.agents.agent_toolkits import SQLDatabaseToolkit
 from sqlalchemy import create_engine
 from langchain_huggingface import HuggingFaceEndpoint
-import sqlite3
+import pysqlite3 as sqlite3
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 
 os.environ['LANGCHAIN_API_KEY']="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"
