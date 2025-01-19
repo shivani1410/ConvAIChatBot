@@ -20,3 +20,5 @@ faiss-cpu
 pysqlite3-binary
 langchain-groq 
 langchain-astradb
+sqlitecloud
+sqlalchemy-sqlitecloud
