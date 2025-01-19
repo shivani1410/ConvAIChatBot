@@ -18,3 +18,5 @@ duckdb
 bs4
 faiss-cpu
 pysqlite3-binary
+langchain-groq 
+langchain-astradb
