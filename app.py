@@ -23,6 +23,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_astradb import AstraDBVectorStore
 from langchain.schema import Document
+import sqlitecloud
 
 os.environ["ASTRA_DB_API_ENDPOINT"] ="https://31fcc75a-fa20-4024-827d-3d22c0ce8453-us-east-2.apps.astra.datastax.com"
 # os.environ["ASTRA_DB_APPLICATION_TOKEN"] ="AstraCS:mlerWESuJtKTZlmlgamIlpxS:9900dddffede6bf6065e13df6e8"
@@ -114,17 +115,13 @@ conversational_rag_chain=RunnableWithMessageHistory(
         )
 
 #### Database query chabot
-LOCALDB='USE_LOCALDB'
-db_uri=LOCALDB
 
 st.cache_resource(ttl='2h')
-def config_db(db_uri):
-  dbfilepath=(Path('/content/medical.db')).absolute()
-  creator=lambda: sqlite3.connect(f"file:{dbfilepath}?mode=ro",uri=True)
-  return SQLDatabase(create_engine("sqlite:///",creator=creator))
+def config_db():
+  return SQLDatabase(create_engine("sqlitecloud://cylddamonk.g1.sqlite.cloud:8860/chinook.sqlite?apikey=Hgal3hl0QpFMyED2Y3Z0XBNsdFiKLnN2kQGM1Y0qZJQ"))
 
 
-db= config_db(db_uri)
+db= config_db()
 
 toolkit=SQLDatabaseToolkit(db=db,llm=llm)
 agent=create_sql_agent(llm=llm,
@@ -165,6 +162,3 @@ if session_id:
     
 else:
     st.warning("Please enter your Name")
-
-
-
