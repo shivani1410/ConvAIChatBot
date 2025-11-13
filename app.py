@@ -27,12 +27,17 @@ from langchain_astradb import AstraDBVectorStore
 from langchain.schema import Document
 import sqlitecloud
 
-os.environ["ASTRA_DB_API_ENDPOINT"] ="https://31fcc75a-fa20-4024-827d-3d22c0ce8453-us-east-2.apps.astra.datastax.com"
+ASTRA_DB_API_ENDPOINT = st.secrets["ASTRA_DB_API_ENDPOINT"]
+ASTRA_DB_APPLICATION_TOKEN = st.secrets["ASTRA_DB_APPLICATION_TOKEN"]
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+HF_TOKEN = st.secrets["HF_TOKEN"]
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
-os.environ["ASTRA_DB_APPLICATION_TOKEN"] ="AstraCS:HpGpnYTyMBonDGgvZxGqbzpN:fb5e31ad2874bc38df320fffc73270cc94ab5cd611e2b31b27c6290f83c9f6b1"
-os.environ["OPENAI_API_KEY"] = "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"
-os.environ['HF_TOKEN']="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"
-os.environ['GROQ_API_KEY']="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"
+os.environ["ASTRA_DB_API_ENDPOINT"] = ASTRA_DB_API_ENDPOINT
+os.environ["ASTRA_DB_APPLICATION_TOKEN"] = ASTRA_DB_APPLICATION_TOKEN
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+os.environ["HF_TOKEN"] = HF_TOKEN
+os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 api_key=os.environ['GROQ_API_KEY']
 
 st.set_page_config(page_title="Medical Chatbot", page_icon=':robot:')
