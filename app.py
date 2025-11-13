@@ -10,7 +10,7 @@ from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain_community.utilities.sql_database import SQLDatabase
-from langchain.agents.agent_types import AgentType
+# from langchain.agents.agent_types import AgentType
 from langchain.callbacks import StreamlitCallbackHandler
 from langchain.agents.agent_toolkits import SQLDatabaseToolkit
 from sqlalchemy import create_engine
@@ -123,17 +123,17 @@ conversational_rag_chain=RunnableWithMessageHistory(
 #### Database query chabot
 
 st.cache_resource(ttl='2h')
-def config_db():
-  return SQLDatabase(create_engine("sqlitecloud://cylddamonk.g1.sqlite.cloud:8860/chinook.sqlite?apikey=Hgal3hl0QpFMyED2Y3Z0XBNsdFiKLnN2kQGM1Y0qZJQ"))
+# def config_db():
+#   return SQLDatabase(create_engine("sqlitecloud://cylddamonk.g1.sqlite.cloud:8860/chinook.sqlite?apikey=Hgal3hl0QpFMyED2Y3Z0XBNsdFiKLnN2kQGM1Y0qZJQ"))
 
 
-db= config_db()
+# db= config_db()
 
-toolkit=SQLDatabaseToolkit(db=db,llm=llm)
-agent=create_sql_agent(llm=llm,
-                       toolkit=toolkit,
-                       verbose=True,
-                       agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
+# toolkit=SQLDatabaseToolkit(db=db,llm=llm)
+# agent=create_sql_agent(llm=llm,
+#                        toolkit=toolkit,
+#                        verbose=True,
+#                        agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
 
 if session_id:
   st.write('Model is Loaded')
