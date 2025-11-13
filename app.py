@@ -43,7 +43,7 @@ api_key=os.environ['GROQ_API_KEY']
 st.set_page_config(page_title="Medical Chatbot", page_icon=':robot:')
 st.title("Medical Chatbot")
 
-llm =ChatGroq(groq_api_key=api_key,model_name='Llama3-8b-8192',streaming=True)
+llm =ChatGroq(groq_api_key=api_key,model_name='llama-3.1-8b-instant',streaming=True)
 session_id=st.text_input("Enter Your Name (without space)")
 if session_id:
   st.write('Model is Loading')
@@ -123,17 +123,17 @@ conversational_rag_chain=RunnableWithMessageHistory(
 #### Database query chabot
 
 st.cache_resource(ttl='2h')
-# def config_db():
-#   return SQLDatabase(create_engine("sqlitecloud://cylddamonk.g1.sqlite.cloud:8860/chinook.sqlite?apikey=Hgal3hl0QpFMyED2Y3Z0XBNsdFiKLnN2kQGM1Y0qZJQ"))
+def config_db():
+  return SQLDatabase(create_engine("sqlitecloud://cylddamonk.g1.sqlite.cloud:8860/chinook.sqlite?apikey=Hgal3hl0QpFMyED2Y3Z0XBNsdFiKLnN2kQGM1Y0qZJQ"))
 
 
-# db= config_db()
+db= config_db()
 
-# toolkit=SQLDatabaseToolkit(db=db,llm=llm)
-# agent=create_sql_agent(llm=llm,
-#                        toolkit=toolkit,
-#                        verbose=True,
-#                        agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
+toolkit=SQLDatabaseToolkit(db=db,llm=llm)
+agent=create_sql_agent(llm=llm,
+                       toolkit=toolkit,
+                       verbose=True,
+                       agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
 
 if session_id:
   st.write('Model is Loaded')
