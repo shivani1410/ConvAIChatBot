@@ -8,7 +8,7 @@ import sqlite3
 from datasets import load_dataset
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
-from langchain.agents.agent_toolkits import create_sql_agent
+from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain.sql_database import SQLDatabase
 from langchain.agents.agent_types import AgentType
 from langchain.callbacks import StreamlitCallbackHandler
