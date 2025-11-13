@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 # LangChain core & community modules
 from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
-from langchain.agents import AgentType
+from langchain_classic.agents import AgentType
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_community.agent_toolkits import SQLDatabaseToolkit, create_sql_agent
 from langchain_community.utilities import SQLDatabase
