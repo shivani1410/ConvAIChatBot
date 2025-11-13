@@ -6,26 +6,28 @@ from pathlib import Path
 import os
 import sqlite3
 from datasets import load_dataset
-from langchain_community.utilities import SQLDatabase
-# from langchain_community.agent_toolkits import SQLDatabaseToolkit
-from langchain_community.agent_toolkits.sql.base import create_sql_agent
-from langchain_community.utilities.sql_database import SQLDatabase
-# from langchain.agents.agent_types import AgentType
-from langchain_community.callbacks.streamlit.streamlit_callback_handler import StreamlitCallbackHandler
-# from langchain.agents.langchain_community import SQLDatabaseToolkit
 from sqlalchemy import create_engine
-from langchain_groq import ChatGroq
-from langchain.chains.history_aware_retriever import create_history_aware_retriever
-from langchain.chains.retrieval import create_retrieval_chain
-from langchain.chains.combine_documents.stuff import create_stuff_documents_chain
-from langchain_community.chat_message_histories.in_memory import ChatMessageHistory
+
+# LangChain core & community modules
+from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.agents import AgentType
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_community.agent_toolkits import SQLDatabaseToolkit, create_sql_agent
+from langchain_community.utilities import SQLDatabase
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_core.documents import Document
+
+# External integrations
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_astradb import AstraDBVectorStore
-from langchain.schema import Document
+from langchain_groq import ChatGroq
+
+# Streamlit callback
+from langchain.callbacks import StreamlitCallbackHandler
+
 import sqlitecloud
 
 ASTRA_DB_API_ENDPOINT = st.secrets["ASTRA_DB_API_ENDPOINT"]
