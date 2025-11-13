@@ -1,33 +1,30 @@
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-import streamlit as st
+# import streamlit as st
 from pathlib import Path
 import os
 import sqlite3
 from datasets import load_dataset
-from sqlalchemy import create_engine
-
-# LangChain core & community modules
-from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
-from langchain_classic.chains.combine_documents import create_stuff_documents_chain
-from langchain_classic.agents import AgentType
-from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_community.agent_toolkits import SQLDatabaseToolkit, create_sql_agent
 from langchain_community.utilities import SQLDatabase
+from langchain_community.agent_toolkits import SQLDatabaseToolkit
+from langchain_community.agent_toolkits.sql.base import create_sql_agent
+from langchain_community.utilities.sql_database import SQLDatabase
+from langchain_classic.agents.agent_types import AgentType
+from langchain_community.callbacks.streamlit.streamlit_callback_handler import StreamlitCallbackHandler
+# from langchain.agents.langchain_community import SQLDatabaseToolkit
+from sqlalchemy import create_engine
+from langchain_groq import ChatGroq
+from langchain_classic.chains import create_history_aware_retriever,create_retrieval_chain
+from langchain_classic.chains.combine_documents.stuff import create_stuff_documents_chain
+from langchain_community.chat_message_histories.in_memory import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_core.documents import Document
-
-# External integrations
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_astradb import AstraDBVectorStore
-from langchain_groq import ChatGroq
-
-# Streamlit callback
-from langchain.callbacks import StreamlitCallbackHandler
-
+from langchain.schema import Document
 import sqlitecloud
 
 ASTRA_DB_API_ENDPOINT = st.secrets["ASTRA_DB_API_ENDPOINT"]
