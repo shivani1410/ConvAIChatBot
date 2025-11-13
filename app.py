@@ -7,12 +7,12 @@ import os
 import sqlite3
 from datasets import load_dataset
 from langchain_community.utilities import SQLDatabase
-from langchain_community.agent_toolkits import SQLDatabaseToolkit
+# from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain_community.utilities.sql_database import SQLDatabase
 # from langchain.agents.agent_types import AgentType
 from langchain_community.callbacks.streamlit.streamlit_callback_handler import StreamlitCallbackHandler
-from langchain.agents.langchain_community import SQLDatabaseToolkit
+# from langchain.agents.langchain_community import SQLDatabaseToolkit
 from sqlalchemy import create_engine
 from langchain_groq import ChatGroq
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
