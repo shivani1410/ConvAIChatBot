@@ -22,4 +22,5 @@ langchain-groq
 langchain-astradb
 sqlitecloud
 sqlalchemy-sqlitecloud
+langchain-classic
 
