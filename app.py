@@ -24,7 +24,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_astradb import AstraDBVectorStore
-from langchain.schema import Document
+from langchain_core.documents import Document
 import sqlitecloud
 
 ASTRA_DB_API_ENDPOINT = st.secrets["ASTRA_DB_API_ENDPOINT"]
